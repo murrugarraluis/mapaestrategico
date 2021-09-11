@@ -1,0 +1,3 @@
+<div>
+    Indicador {{$process}}
+</div>

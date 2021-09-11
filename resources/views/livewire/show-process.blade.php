@@ -122,6 +122,14 @@
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-10">
                                             <div class="flex flex-col md:flex-row">
 {{--                                                 @livewire('info-companies', ['company' => $company], key($company->RUC))--}}
+                                                <div class="flex">
+                                                    <a href="{{route('indicator',$process->id)}}"
+                                                       class="cursor-pointer border border-blue-400 bg-blue-400 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-blue-600 focus:outline-none focus:shadow-outline">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+                                                        </svg>
+                                                    </a>
+                                                </div>
                                                 @livewire('edit-process', ['process' => $process], key("edit".$process->id))
                                                 <div class="flex">
                                                     <a wire:click="delete({{ $process->id }})"

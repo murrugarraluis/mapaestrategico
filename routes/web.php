@@ -24,3 +24,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/procesos', function () {
     return view('mantainers.process');
 })->name('process');
+Route::middleware(['auth:sanctum', 'verified'])->get('/indicadores/{id}', function ($id) {
+    return view('mantainers.indicator',['id'=>$id]);
+})->name('indicator');
