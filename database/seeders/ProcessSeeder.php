@@ -21,7 +21,7 @@ class ProcessSeeder extends Seeder
             'name'=>'Logística de Abastecimiento'
         ]);
         Process::create([
-            'name'=>'Logística de Abastecimiento'
+            'name'=>'Ventas'
         ]);
         Process::create([
             'name'=>'Diseño de Piezas'

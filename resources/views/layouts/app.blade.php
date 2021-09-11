@@ -12,7 +12,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         @livewireStyles
 
         <!-- Scripts -->
@@ -42,5 +42,64 @@
         @stack('modals')
 
         @livewireScripts
+        <script>
+            Livewire.on('alert', function (message) {
+                Swal.fire({
+                    // position: 'top-end',
+                    icon: 'success',
+                    title: message,
+                    showConfirmButton: false,
+                    timer: 1200
+                })
+            });
+
+            Livewire.on('info', function (message) {
+                Swal.fire(
+                    'Atencion!',
+                    message,
+                    'warning'
+                )
+            });
+            Livewire.on('error', function (message) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: message,
+                })
+            });
+
+            Livewire.on('delete', function (message, id) {
+                Swal.fire({
+                    title: '¿Desea Eliminarlo?',
+                    text: message,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si, Eliminar',
+                    cancelButtonText: 'No, Cancelar',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Livewire.emit('destroy', id);
+                    }
+                })
+            });
+            Livewire.on('renovate', function (message, id) {
+                Swal.fire({
+                    title: '¿Desea Restaurarlo?',
+                    text: message,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si, Restaurar',
+                    cancelButtonText: 'No, Cancelar',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Livewire.emit('restore', id);
+                    }
+                })
+            });
+        </script>
     </body>
 </html>
