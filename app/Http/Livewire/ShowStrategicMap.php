@@ -3,6 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\Indicator;
+use App\Models\StrategicMap;
+use Dflydev\DotAccessData\Data;
 use Livewire\Component;
 
 class ShowStrategicMap extends Component
@@ -12,12 +14,10 @@ class ShowStrategicMap extends Component
 
     public function render()
     {
-//        $this->indicatorsA = Indicator::where('process_id', $this->process_id)->where('level', 'Financiera')->get();
-//        $this->indicatorsB = Indicator::where('process_id', $this->process_id)->where('level', 'Clientes')->get();
-//        $this->indicatorsC = Indicator::where('process_id', $this->process_id)->where('level', 'Procesos Internos')->get();
-//        $this->indicatorsD = Indicator::where('process_id', $this->process_id)->where('level', 'Aprendizaje y Crecimiento')->get();
-        $indicators = Indicator::where('process_id', $this->process_id)->get();
-        $this->indicators = compact('indicators');
+        $strategic_map = StrategicMap::where('process_id',$this->process_id);
+        if ($strategic_map->count()>0){
+            $this->indicators = $strategic_map->first()->data;
+        }
         return view('livewire.show-strategic-map');
     }
 }

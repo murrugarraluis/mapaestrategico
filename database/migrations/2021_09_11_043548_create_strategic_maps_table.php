@@ -16,6 +16,7 @@ class CreateStrategicMapsTable extends Migration
         Schema::create('strategic_maps', function (Blueprint $table) {
             $table->id();
             $table->foreignId('process_id')->constrained('processes');
+            $table->text('data')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

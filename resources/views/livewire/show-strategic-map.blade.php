@@ -402,14 +402,14 @@
                         { key: "Procesos Internos", text: "Procesos Internos", isGroup: true, group: "Pool1", color: "yellow" },
                         { key: "Aprendizaje y Crecimiento", text: "Aprendizaje y Crecimiento", isGroup: true, group: "Pool1", color: "orange" },
                     ];
-                    var indicators = @this.indicators;
-                    if (indicators != null) {
-                        let array = indicators['indicators'];
-                        for (let val of array) {
-                            var data = { group: val['level'],key: val['name']};
-                            NodeData.push(data);
-                        }
-                    }
+                    // var indicators = @this.indicators;
+                    // if (indicators != null) {
+                    //     let array = indicators['indicators'];
+                    //     for (let val of array) {
+                    //         var data = { group: val['level'],key: val['name']};
+                    //         NodeData.push(data);
+                    //     }
+                    // }
                     myDiagram.model = new go.GraphLinksModel(
                         NodeData,
                         [ // link data
@@ -431,6 +431,8 @@
                         ]);
                     // force all lanes' layouts to be performed
                     relayoutLanes();
+                    var data = @this.indicators;
+                    loadDiagram(data);
                 }  // end init
 
                 // Show the diagram's model in JSON format
@@ -442,6 +444,10 @@
                     myDiagram.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
                     myDiagram.delayInitialization(relayoutDiagram);
                 }
+                function loadDiagram(data) {
+                    myDiagram.model = go.Model.fromJson(data);
+                    myDiagram.delayInitialization(relayoutDiagram);
+                }
                 window.addEventListener('DOMContentLoaded', init);
             </script>
 
@@ -450,6 +456,7 @@
                 <button onclick="relayoutLanes()">Layout</button>
                 <button id="SaveButton" onclick="save()">Save</button>
                 <button onclick="load()">Load</button>
+                <br>
                 Diagram Model saved in JSON format:
                 <br />
                 <textarea id="mySavedModel" style="width:100%;height:300px"></textarea>
