@@ -27,3 +27,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/procesos', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/indicadores/{id}', function ($id) {
     return view('mantainers.indicator',['id'=>$id]);
 })->name('indicator');
+Route::middleware(['auth:sanctum', 'verified'])->get('/mapa-estrategico/{id}', function ($id) {
+    return view('mantainers.strategic-map',['id'=>$id]);
+})->name('strategic-map');

@@ -13,6 +13,7 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script src="https://unpkg.com/gojs/release/go-debug.js"></script>
         @livewireStyles
 
         <!-- Scripts -->
