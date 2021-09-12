@@ -101,6 +101,22 @@
                     }
                 })
             });
+            Livewire.on('save', function (message, id) {
+                Swal.fire({
+                    title: '¿Desea Guardar los cambios?',
+                    text: message,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si, Guardar',
+                    cancelButtonText: 'No, Cancelar',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Livewire.emit('restore', id);
+                    }
+                })
+            });
         </script>
     </body>
 </html>

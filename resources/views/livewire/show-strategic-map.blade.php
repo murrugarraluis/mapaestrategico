@@ -437,8 +437,10 @@
 
                 // Show the diagram's model in JSON format
                 function save() {
-                    document.getElementById("mySavedModel").value = myDiagram.model.toJson();
-                    myDiagram.isModified = false;
+                    // document.getElementById("mySavedModel").value = myDiagram.model.toJson();
+                    // myDiagram.isModified = false;
+                    var dataSaved = myDiagram.model.toJson();
+                    @this.store(dataSaved);
                 }
                 function load() {
                     myDiagram.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
