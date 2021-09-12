@@ -17,20 +17,67 @@
         </x-slot>
         <x-slot name='content'>
             <form id="myForm" wire:submit.prevent="store">
-                <div class="">
-                    <x-jet-label value="Nombre" class="mb-2"></x-jet-label>
-                    <x-jet-input type="text" class="w-full" wire:model.defer="name" required></x-jet-input>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="">
+                        <x-jet-label value="Nombre" class="mb-2"></x-jet-label>
+                        <x-jet-input type="text" class="w-full" wire:model.defer="name" required></x-jet-input>
+                    </div>
+                    <div>
+                        <x-jet-label value="Nivel" class="mb-2"></x-jet-label>
+                        <select wire:model.defer="level"
+                                class="w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm'"
+                                required>
+                            <option value="" hidden>Seleccione</option>
+                            <option>Financiera</option>
+                            <option>Clientes</option>
+                            <option>Procesos Internos</option>
+                            <option>Aprendizaje y Crecimiento</option>
+                        </select>
+                    </div>
                 </div>
-                <div>
-                    <x-jet-label value="Nivel" class="mb-2"></x-jet-label>
-                    <select wire:model.defer="level"
-                            class="w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm'" required>
-                        <option value="" hidden>Seleccione</option>
-                        <option>Financiera</option>
-                        <option>Clientes</option>
-                        <option>Procesos Internos</option>
-                        <option>Aprendizaje y Crecimiento</option>
-                    </select>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="col-span-1">
+                        <x-jet-label value="Formula" class="mb-2"></x-jet-label>
+                        <x-jet-input type="text" class="w-full" wire:model.defer="formula" required></x-jet-input>
+                    </div>
+                    <div class="col-span-2">
+                        <x-jet-label value="Objetivo" class="mb-2"></x-jet-label>
+                        <x-jet-input type="text" class="w-full" wire:model.defer="objective" required></x-jet-input>
+                    </div>
+                </div>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="col-span-1">
+                        <x-jet-label value="Frecuencia" class="mb-2"></x-jet-label>
+                        <x-jet-input type="text" class="w-full" wire:model.defer="frequency" required></x-jet-input>
+                    </div>
+                    <div class="col-span-2">
+                        <x-jet-label value="Meta" class="mb-2"></x-jet-label>
+                        <x-jet-input type="text" class="w-full" wire:model.defer="goal" required></x-jet-input>
+                    </div>
+                </div>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="">
+                        <x-jet-label value="Malo" class="mb-2"></x-jet-label>
+                        <x-jet-input type="text" class="w-full" wire:model.defer="bad_range" required></x-jet-input>
+                    </div>
+                    <div class="">
+                        <x-jet-label value="Regular" class="mb-2"></x-jet-label>
+                        <x-jet-input type="text" class="w-full" wire:model.defer="regular_range" required></x-jet-input>
+                    </div>
+                    <div class="">
+                        <x-jet-label value="Bueno" class="mb-2"></x-jet-label>
+                        <x-jet-input type="text" class="w-full" wire:model.defer="good_range" required></x-jet-input>
+                    </div>
+                </div>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="col-span-2">
+                        <x-jet-label value="Iniciativas" class="mb-2"></x-jet-label>
+                        <x-jet-input type="text" class="w-full" wire:model.defer="iniciatives" required></x-jet-input>
+                    </div>
+                    <div class="">
+                        <x-jet-label value="Responsable" class="mb-2"></x-jet-label>
+                        <x-jet-input type="text" class="w-full" wire:model.defer="responsable" required></x-jet-input>
+                    </div>
                 </div>
             </form>
         </x-slot>

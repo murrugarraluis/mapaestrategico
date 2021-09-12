@@ -26,6 +26,7 @@ class CreateControlPanelsTable extends Migration
             $table->string('iniciatives');
             $table->string('responsable');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

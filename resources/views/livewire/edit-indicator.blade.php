@@ -16,26 +16,73 @@
             </p>
         </x-slot>
         <x-slot name='content'>
-            <form id="myForm" wire:submit.prevent="update">
-                <div class="">
-                    <x-jet-label value="Nombre" class="mb-2"></x-jet-label>
-                    <x-jet-input type="text" class="w-full" wire:model.defer="indicator.name" required></x-jet-input>
+            <form id="FormUpdateIndicator{{$indicator->id}}" wire:submit.prevent="update">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="">
+                        <x-jet-label value="Nombre" class="mb-2"></x-jet-label>
+                        <x-jet-input type="text" class="w-full" wire:model.defer="indicator.name" required></x-jet-input>
+                    </div>
+                    <div>
+                        <x-jet-label value="Nivel" class="mb-2"></x-jet-label>
+                        <select wire:model.defer="indicator.level"
+                                class="w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm'"
+                                required>
+                            <option value="" hidden>Seleccione</option>
+                            <option>Financiera</option>
+                            <option>Clientes</option>
+                            <option>Procesos Internos</option>
+                            <option>Aprendizaje y Crecimiento</option>
+                        </select>
+                    </div>
                 </div>
-                <div>
-                    <x-jet-label value="Nivel" class="mb-2"></x-jet-label>
-                    <select wire:model.defer="indicator.level"
-                            class="w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm'" required>
-                        <option value="" hidden>Seleccione</option>
-                        <option>Financiera</option>
-                        <option>Clientes</option>
-                        <option>Procesos Internos</option>
-                        <option>Aprendizaje y Crecimiento</option>
-                    </select>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="col-span-1">
+                        <x-jet-label value="Formula" class="mb-2"></x-jet-label>
+                        <x-jet-input type="text" class="w-full" wire:model.defer="indicator.controlpanel.formula" required></x-jet-input>
+                    </div>
+                    <div class="col-span-2">
+                        <x-jet-label value="Objetivo" class="mb-2"></x-jet-label>
+                        <x-jet-input type="text" class="w-full" wire:model.defer="indicator.controlpanel.objective" required></x-jet-input>
+                    </div>
+                </div>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="col-span-1">
+                        <x-jet-label value="Frecuencia" class="mb-2"></x-jet-label>
+                        <x-jet-input type="text" class="w-full" wire:model.defer="indicator.controlpanel.frequency" required></x-jet-input>
+                    </div>
+                    <div class="col-span-2">
+                        <x-jet-label value="Meta" class="mb-2"></x-jet-label>
+                        <x-jet-input type="text" class="w-full" wire:model.defer="indicator.controlpanel.goal" required></x-jet-input>
+                    </div>
+                </div>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="">
+                        <x-jet-label value="Malo" class="mb-2"></x-jet-label>
+                        <x-jet-input type="text" class="w-full" wire:model.defer="indicator.controlpanel.bad_range" required></x-jet-input>
+                    </div>
+                    <div class="">
+                        <x-jet-label value="Regular" class="mb-2"></x-jet-label>
+                        <x-jet-input type="text" class="w-full" wire:model.defer="indicator.controlpanel.regular_range" required></x-jet-input>
+                    </div>
+                    <div class="">
+                        <x-jet-label value="Bueno" class="mb-2"></x-jet-label>
+                        <x-jet-input type="text" class="w-full" wire:model.defer="indicator.controlpanel.good_range" required></x-jet-input>
+                    </div>
+                </div>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="col-span-2">
+                        <x-jet-label value="Iniciativas" class="mb-2"></x-jet-label>
+                        <x-jet-input type="text" class="w-full" wire:model.defer="indicator.controlpanel.iniciatives" required></x-jet-input>
+                    </div>
+                    <div class="">
+                        <x-jet-label value="Responsable" class="mb-2"></x-jet-label>
+                        <x-jet-input type="text" class="w-full" wire:model.defer="indicator.controlpanel.responsable" required></x-jet-input>
+                    </div>
                 </div>
             </form>
         </x-slot>
         <x-slot name='footer'>
-            <x-jet-button form="myForm" wire:loading.attr='disabled' wire:target="update">Guardar</x-jet-button>
+            <x-jet-button form="FormUpdateIndicator{{$indicator->id}}" wire:loading.attr='disabled' wire:target="update">Guardar</x-jet-button>
             <x-jet-secondary-button wire:click="$set('open',false)">Cancelar</x-jet-secondary-button>
         </x-slot>
     </x-jet-dialog-modal>

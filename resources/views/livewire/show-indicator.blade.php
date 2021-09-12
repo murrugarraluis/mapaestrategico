@@ -52,17 +52,17 @@
                     <table class="min-w-full leading-normal">
                         <thead>
                         <tr>
-                            <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider select-none	">
-                                <div class="flex justify-between cursor-pointer" wire:click="order('id')">
-                                    id
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
-                                         stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                              d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
-                                    </svg>
-                                </div>
-                            </th>
+{{--                            <th--}}
+{{--                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider select-none	">--}}
+{{--                                <div class="flex justify-between cursor-pointer" wire:click="order('id')">--}}
+{{--                                    id--}}
+{{--                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"--}}
+{{--                                         stroke="currentColor">--}}
+{{--                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"--}}
+{{--                                              d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />--}}
+{{--                                    </svg>--}}
+{{--                                </div>--}}
+{{--                            </th>--}}
                             <th
                                 class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider select-none	">
                                 <div class="flex justify-between cursor-pointer" wire:click="order('name')">
@@ -87,6 +87,48 @@
                             </th>
                             <th
                                 class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider select-none	">
+                                <div class="flex justify-between cursor-pointer" wire:click="order('level')">
+                                    Formula
+                                </div>
+                            </th>
+                            <th
+                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider select-none	">
+                                <div class="flex justify-between cursor-pointer" wire:click="order('level')">
+                                    Objetivo
+                                </div>
+                            </th>
+                            <th
+                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider select-none	">
+                                <div class="flex justify-between cursor-pointer" wire:click="order('level')">
+                                    Frecuencia de Medicion
+                                </div>
+                            </th>
+                            <th
+                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider select-none	">
+                                <div class="flex justify-between cursor-pointer" wire:click="order('level')">
+                                    Meta
+                                </div>
+                            </th>
+                            <th
+                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider select-none	">
+                                <div class="flex justify-between cursor-pointer" wire:click="order('level')">
+                                    Malo
+                                </div>
+                            </th>
+                            <th
+                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider select-none	">
+                                <div class="flex justify-between cursor-pointer" wire:click="order('level')">
+                                    Regular
+                                </div>
+                            </th>
+                            <th
+                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider select-none	">
+                                <div class="flex justify-between cursor-pointer" wire:click="order('level')">
+                                    Bueno
+                                </div>
+                            </th>
+                            <th
+                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider select-none	">
                                 Estado
                             </th>
                             <th
@@ -98,14 +140,32 @@
                         @if ($indicators->count())
                             @foreach ($indicators as $indicator)
                                 <tr>
-                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <p class="text-gray-600 whitespace-no-wrap">{{ $indicator->id }}</p>
-                                    </td>
-                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <p class="text-gray-600 whitespace-no-wrap">{{ $indicator->name}}</p>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <p class="text-gray-600 whitespace-no-wrap">{{ $indicator->level}}</p>
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <p class="text-gray-600 whitespace-no-wrap">{{ $indicator->controlpanel->formula}}</p>
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <p class="text-gray-600 whitespace-no-wrap">{{ $indicator->controlpanel->objective}}</p>
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <p class="text-gray-600 whitespace-no-wrap">{{ $indicator->controlpanel->frequency}}</p>
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <p class="text-gray-600 whitespace-no-wrap">{{ $indicator->controlpanel->goal}}</p>
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <p class="text-gray-600 whitespace-no-wrap">{{ $indicator->controlpanel->bad_range}}</p>
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <p class="text-gray-600 whitespace-no-wrap">{{ $indicator->controlpanel->regular_range}}</p>
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <p class="text-gray-600 whitespace-no-wrap">{{ $indicator->controlpanel->good_range}}</p>
                                     </td>
                                     @if ($indicator->trashed())
                                         <td class="px-5 py-5 border-b border-gray-200 bg-transparent text-sm w-10">

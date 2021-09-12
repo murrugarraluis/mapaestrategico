@@ -9,10 +9,19 @@ class CreateIndicator extends Component
 {
     public $open = false;
     public $process_id;
-    public $name,$level;
+    public $name,$level,$formula,$objective,$frequency,$goal,$bad_range,$regular_range,$good_range,$iniciatives,$responsable;
     protected $rules = [
         'name' => 'required',
         'level' => 'required',
+        'formula' => 'required',
+        'objective' => 'required',
+        'frequency' => 'required',
+        'goal' => 'required',
+        'bad_range' => 'required',
+        'regular_range' => 'required',
+        'good_range' => 'required',
+        'iniciatives' => 'required',
+        'responsable' => 'required',
     ];
     public function render()
     {
@@ -20,12 +29,23 @@ class CreateIndicator extends Component
     }
     public function store()
     {
-        $this->validate();
         try {
+            $this->validate();
             $process = Process::find($this->process_id);
-            $process->indicators()->create([
+            $indicator = $process->indicators()->create([
                 'name' => trim(ucfirst($this->name)),
                 'level' => trim(ucfirst($this->level)),
+            ]);
+            $indicator->controlpanel()->create([
+                'formula'=>trim(ucfirst($this->formula)),
+                'objective'=>trim(ucfirst($this->objective)),
+                'frequency'=>trim(ucfirst($this->frequency)),
+                'goal'=>trim(ucfirst($this->goal)),
+                'bad_range'=>trim(ucfirst($this->bad_range)),
+                'regular_range'=>trim(ucfirst($this->regular_range)),
+                'good_range'=>trim(ucfirst($this->good_range)),
+                'iniciatives'=>trim(ucfirst($this->iniciatives)),
+                'responsable'=>trim(ucfirst($this->responsable)),
             ]);
             $this->default();
             $this->emitTo('show-indicator', 'render');
