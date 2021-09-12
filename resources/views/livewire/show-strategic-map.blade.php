@@ -172,7 +172,6 @@
 
                 function init() {
                     var $ = go.GraphObject.make;
-
                     myDiagram =
                         $(go.Diagram, "myDiagramDiv",
                             {
@@ -395,18 +394,24 @@
                         );
 
                     // define some sample graphs in some of the lanes
+                    var NodeData = [
+                        // node data
+                        { key: "Pool1", text: "Mapa Estrategico",  isGroup: true, category: "Pool" },
+                        { key: "Financiera", text: "Financiera", isGroup: true, group: "Pool1", color: "lightblue" },
+                        { key: "Clientes", text: "Clientes", isGroup: true, group: "Pool1", color: "lightgreen" },
+                        { key: "Procesos Internos", text: "Procesos Internos", isGroup: true, group: "Pool1", color: "yellow" },
+                        { key: "Aprendizaje y Crecimiento", text: "Aprendizaje y Crecimiento", isGroup: true, group: "Pool1", color: "orange" },
+                    ];
+                    var indicators = @this.indicators;
+                    if (indicators != null) {
+                        let array = indicators['indicators'];
+                        for (let val of array) {
+                            var data = { group: val['level'],key: val['name']};
+                            NodeData.push(data);
+                        }
+                    }
                     myDiagram.model = new go.GraphLinksModel(
-                        [ // node data
-                            { key: "Pool1", text: "Mapa Estrategico",  isGroup: true, category: "Pool" },
-                            { key: "1", text: "Financiera", isGroup: true, group: "Pool1", color: "lightblue" },
-                            { key: "2", text: "Cliente", isGroup: true, group: "Pool1", color: "lightgreen" },
-                            { key: "3", text: "Proceso Internos", isGroup: true, group: "Pool1", color: "yellow" },
-                            { key: "4", text: "Aprendizaje y Crecimiento", isGroup: true, group: "Pool1", color: "orange" },
-                            // { group: "1",key: "A"},
-                            // { group: "2",key: "B" },
-                            // { group: "3",key: "C" },
-                            // { group: "4",key: "D" },
-                        ],
+                        NodeData,
                         [ // link data
                             // { from: "oneA", to: "oneB" },
                             // { from: "oneA", to: "oneC" },
@@ -445,6 +450,9 @@
                 <button onclick="relayoutLanes()">Layout</button>
                 <button id="SaveButton" onclick="save()">Save</button>
                 <button onclick="load()">Load</button>
+                Diagram Model saved in JSON format:
+                <br />
+                <textarea id="mySavedModel" style="width:100%;height:300px"></textarea>
             </div>
         </div>
         <!-- * * * * * * * * * * * * * -->
