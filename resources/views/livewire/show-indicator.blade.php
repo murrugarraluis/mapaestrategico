@@ -195,6 +195,7 @@
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-10">
                                             <div class="flex flex-col md:flex-row">
+                                                @livewire('info-indicator', ['indicator' => $indicator], key("info".$indicator->id))
                                                 @livewire('edit-indicator', ['indicator' => $indicator], key("edit".$indicator->id))
                                                 <div class="flex">
                                                     <a wire:click="delete({{ $indicator->id }})"
