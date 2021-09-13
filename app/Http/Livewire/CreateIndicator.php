@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Process;
+use App\Models\StrategicMap;
 use Livewire\Component;
 use Exception;
 class CreateIndicator extends Component
@@ -47,6 +48,21 @@ class CreateIndicator extends Component
                 'iniciatives'=>trim(ucfirst($this->iniciatives)),
                 'responsable'=>trim(ucfirst($this->responsable)),
             ]);
+//           Almacenar Indicador en Mapa Estrategico
+//              Agregar Indicador a grupo de nodos
+            $indicator = ',{"group":"'.trim(ucfirst($this->level)).'","key":"'.trim(ucfirst($this->name)).'","loc":"50 100"}';
+            $node = StrategicMap::where('process_id',$this->process_id)->first()->node;
+            $node.= $indicator;
+//            Agrupar indicador a DATA en formato JSON
+            $data = '{ "class": "GraphLinksModel", "nodeDataArray": ['.$node.'],"linkDataArray": []}';
+
+//            Actualizar Campo Data
+            $strategic_map = StrategicMap::where('process_id',$this->process_id)->first();
+            $strategic_map->update([
+               'data'=>$data,
+                'node'=>$node,
+            ]);
+
             $this->default();
             $this->emitTo('show-indicator', 'render');
             $this->emit('alert', 'Indicador Agregado');

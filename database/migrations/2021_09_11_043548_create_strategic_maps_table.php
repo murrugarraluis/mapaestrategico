@@ -17,6 +17,7 @@ class CreateStrategicMapsTable extends Migration
             $table->id();
             $table->foreignId('process_id')->constrained('processes');
             $table->text('data')->nullable();
+            $table->text('node')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

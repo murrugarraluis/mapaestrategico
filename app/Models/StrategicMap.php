@@ -10,6 +10,10 @@ class StrategicMap extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    protected $fillable =[
+      'data',
+      'node'
+    ];
     public function process(){
         return $this->belongsTo(Process::class);
     }
