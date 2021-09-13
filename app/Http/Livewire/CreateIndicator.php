@@ -51,10 +51,11 @@ class CreateIndicator extends Component
 //           Almacenar Indicador en Mapa Estrategico
 //              Agregar Indicador a grupo de nodos
             $indicator = ',{"group":"'.trim(ucfirst($this->level)).'","key":"'.trim(ucfirst($this->name)).'","loc":"50 100"}';
+            $link = StrategicMap::where('process_id',$this->process_id)->first()->link;
             $node = StrategicMap::where('process_id',$this->process_id)->first()->node;
             $node.= $indicator;
 //            Agrupar indicador a DATA en formato JSON
-            $data = '{ "class": "GraphLinksModel", "nodeDataArray": ['.$node.'],"linkDataArray": []}';
+            $data = '{ "class": "GraphLinksModel", "nodeDataArray": ['.$node.'],"linkDataArray": ['.$link.']}';
 
 //            Actualizar Campo Data
             $strategic_map = StrategicMap::where('process_id',$this->process_id)->first();

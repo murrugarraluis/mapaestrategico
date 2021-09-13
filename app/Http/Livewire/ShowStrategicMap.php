@@ -21,10 +21,17 @@ class ShowStrategicMap extends Component
         return view('livewire.show-strategic-map');
     }
     public function store($data){
-        try {
+        try{
+//            Extraer Seccion de Links de la Data
+            $link_data = json_decode($data);
+            $link_json = json_encode($link_data->linkDataArray);
+//            Quitar corchetes de link_json
+            $link = substr($link_json, 1, -1);
+
             $strategic_map = StrategicMap::where('process_id',$this->process_id);
             $strategic_map->update([
                 'data' => $data,
+                'link' => $link,
             ]);
             $this->emit('alert','Cambios Guardados');
             $this->redirect('/procesos');

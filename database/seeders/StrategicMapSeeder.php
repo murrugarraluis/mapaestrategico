@@ -30,7 +30,12 @@ class StrategicMapSeeder extends Seeder
                         {"group":"Aprendizaje y Crecimiento","key":"Habilidades y Capacidades","loc":"156.11929067457748 432.5"},
                         {"group":"Aprendizaje y Crecimiento","key":"Clima Laboral","loc":"369.7892125495775 431.5"}
                         ],
-                        "linkDataArray": []}'
+                        "linkDataArray": [{"from":"Habilidades y Capacidades","to":"Capacitación del Personal"},
+                    {"from":"Clima Laboral","to":"Eficiencia de procesos"},
+                    {"from":"Eficiencia de procesos","to":"Satisfacción del Cliente"},
+                    {"from":"Capacitación del Personal","to":"Satisfacción del Cliente"},
+                    {"from":"Satisfacción del Cliente","to":"Valorización de la marca"},
+                    {"from":"Satisfacción del Cliente","to":"Crecimiento de Productividad e Ingresos"}]}'
         ;
         $node = '       {"key":"Pool1","text":"Mapa Estrategico","isGroup":true,"category":"Pool","loc":"26.59644317626953 0.5"},
                         {"key":"Financiera","text":"Financiera","isGroup":true,"group":"Pool1","color":"lightblue","loc":"53.11929067457747 0.5","size":"807 123","expanded":true,"savedBreadth":123},
@@ -44,9 +49,17 @@ class StrategicMapSeeder extends Seeder
                         {"group":"Procesos Internos","key":"Eficiencia de procesos","loc":"327.6024449714525 281.5"},
                         {"group":"Aprendizaje y Crecimiento","key":"Habilidades y Capacidades","loc":"156.11929067457748 432.5"},
                         {"group":"Aprendizaje y Crecimiento","key":"Clima Laboral","loc":"369.7892125495775 431.5"}';
+
+        $link = '{"from":"Habilidades y Capacidades","to":"Capacitación del Personal"},
+                    {"from":"Clima Laboral","to":"Eficiencia de procesos"},
+                    {"from":"Eficiencia de procesos","to":"Satisfacción del Cliente"},
+                    {"from":"Capacitación del Personal","to":"Satisfacción del Cliente"},
+                    {"from":"Satisfacción del Cliente","to":"Valorización de la marca"},
+                    {"from":"Satisfacción del Cliente","to":"Crecimiento de Productividad e Ingresos"}';
         $strategic_map = $process->strategicmap()->create([
             'data' => $data,
             'node' =>$node,
+            'link' =>$link,
         ]);
         $strategic_map->indicators()->attach([1,2,3,4,5,6,7]);
     }

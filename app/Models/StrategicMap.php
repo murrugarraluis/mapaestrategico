@@ -12,7 +12,8 @@ class StrategicMap extends Model
     use SoftDeletes;
     protected $fillable =[
       'data',
-      'node'
+      'node',
+      'link'
     ];
     public function process(){
         return $this->belongsTo(Process::class);
