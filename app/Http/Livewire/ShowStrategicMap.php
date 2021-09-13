@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Indicator;
+use App\Models\Process;
 use App\Models\StrategicMap;
 use Dflydev\DotAccessData\Data;
 use Livewire\Component;
@@ -18,7 +19,8 @@ class ShowStrategicMap extends Component
         if ($strategic_map->count()>0){
             $this->indicators = $strategic_map->first()->data;
         }
-        return view('livewire.show-strategic-map');
+        $process = Process::find($this->process_id);
+        return view('livewire.show-strategic-map',compact('process'));
     }
     public function store($data){
         try{
